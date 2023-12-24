@@ -44,5 +44,5 @@ bun run start
 ## Security included
 * `cors` domain whitelisting
 * `x-api-key` whitelisting
-* *optional* HTTPS
-* *optional* `JWT` `Authorization`
+* *optional* add HTTPS
+* *optional* add `JWT` `Authorization`
