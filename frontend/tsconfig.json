@@ -36,6 +36,14 @@
     ],
     "useUnknownInCatchVariables": false,
   },
+  "include": [
+    "./.nuxt/nuxt.d.ts",
+    "./**/*",
+    "./node_modules/@vite-pwa/nuxt/runtime",
+    "./node_modules/@pinia/nuxt/runtime",
+    "./node_modules/@nuxt/telemetry/runtime",
+    ".."
+  ],
   "exclude": [
     "node_modules"
   ]
