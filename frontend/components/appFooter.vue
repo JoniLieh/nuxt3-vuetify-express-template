@@ -12,7 +12,7 @@
       <v-col cols="6" sm="1">
         <a href="/" target="_blank">
           <v-img
-            src="/icon.png"
+            src="/images/logo.svg"
             alt="Logo"
           ></v-img>
         </a>

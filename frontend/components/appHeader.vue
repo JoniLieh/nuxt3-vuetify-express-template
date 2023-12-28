@@ -5,7 +5,7 @@
         <v-col cols="1">
           <nuxt-link to="/">
             <v-img
-              src="/icon.png"
+              src="/images/logo.svg"
               alt="Logo"
             ></v-img>
           </nuxt-link>
@@ -13,10 +13,8 @@
 
         <v-col cols="auto">
           <v-tabs>
-            <v-tab to="/">Home</v-tab>
-            <v-tab v-for="{ text, link} in links" :key="link" :to="link" >
-              {{ text }}
-            </v-tab>
+            <v-tab to="/" prepend-icon="mdi-home">Home</v-tab>
+            <v-tab v-for="{ text, link, icon } in links" :key="link" :to="link" :prepend-icon="icon" :text="text" />
           </v-tabs>
         </v-col>
 
@@ -45,8 +43,9 @@ export default {
   data: () => ({
     links: [
       {
-        text: "Login",
-        link: "/auth/login"
+        text: "About",
+        link: "/about",
+        icon: "mdi-account"
       }
     ],
   }),
