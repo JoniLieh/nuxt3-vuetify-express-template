@@ -3,29 +3,33 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "nuxt build --dotenv ../.env.production",
+    "build": "bun run generate-pwa-assets && nuxt build --dotenv ../.env.production",
     "dev": "nuxt dev --dotenv ../.env.development",
     "generate": "nuxt generate --dotenv ../.env.production",
     "preview": "nuxt preview --dotenv ../.env.production",
+    "upgrade": "nuxi upgrade",
     "reset": "rm -rf .nuxt node_modules .output package-lock.json && bun install",
     "postinstall": "nuxt prepare",
-    "start": "node .output/server/index.mjs"
+    "start": "node .output/server/index.mjs",
+    "generate-pwa-assets": "pwa-assets-generator"
   },
   "devDependencies": {
     "@nuxt/devtools": "latest",
     "@nuxt/types": "^2.17.2",
     "@nuxt/typescript-build": "^3.0.2",
     "@pinia/nuxt": "^0.5.1",
-    "nuxt": "^3.8.2",
+    "@vite-pwa/assets-generator": "^0.2.2",
+    "@vite-pwa/nuxt": "^0.4.0",
+    "nuxt": "^3.9.0",
     "pinia": "^2.1.7",
+    "sass": "^1.69.5",
     "typescript": "^5.3.3",
     "vite-plugin-vuetify": "^2.0.1",
-    "vue": "^3.3.12",
+    "vue": "^3.3.13",
     "vue-router": "^4.2.5",
     "vuetify": "^3.4.8"
   },
   "dependencies": {
-    "@kevinmarrec/nuxt-pwa": "^0.17.0",
-    "@mdi/font": "^7.3.67"
+    "@mdi/font": "^7.4.47"
   }
 }

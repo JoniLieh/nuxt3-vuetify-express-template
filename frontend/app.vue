@@ -1,7 +1,13 @@
 <template>
-  <NuxtLayout>
-    <NuxtPage />
-  </NuxtLayout>
+	<div>
+		<NuxtPwaManifest />
+
+		<NuxtLoadingIndicator />
+		
+		<NuxtLayout>
+			<NuxtPage />
+		</NuxtLayout>
+	</div>
 </template>
 
 <script lang="ts" setup>
