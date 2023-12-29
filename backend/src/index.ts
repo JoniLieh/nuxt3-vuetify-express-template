@@ -1,23 +1,24 @@
-import express from "express";
-import cors from "cors";
+import express, { NextFunction } from "express";
 import bodyParser from "body-parser"; // Import body-parser
 import apiKeyMiddleware from './middlewares/apiKey';
-import corsMiddleware from './middlewares/cors';
+import { setCorsHeaders as setCorsHeadersMiddleware, corsOrigin as corsOriginMiddleware } from './middlewares/cors';
+import { errorLogger as errorLoggerMiddleware, logger as loggerMiddleware } from './middlewares/loggers';
+import rateLimitMiddleware from './middlewares/rateLimit';
 
 const app = express();
 const port = process.env.BACKEND_API_PORT;
 
 app.use(bodyParser.json()); // Parse JSON bodies
 app.use(bodyParser.urlencoded({ extended: true })); // Parse URL-encoded bodies
-app.use(corsMiddleware);
+app.use(loggerMiddleware);
+app.use(rateLimitMiddleware);
+
+app.use(setCorsHeadersMiddleware); // before any requests
+app.use(corsOriginMiddleware); // cors origin Middleware
+
 app.use(apiKeyMiddleware); // API-KEY Middleware
 
 const router = express.Router();
-
-app.use(function (req, res, next) {
-  console.log('Time:', new Date());
-  next();
-});
 
 // /api
 
@@ -31,6 +32,7 @@ router.post("/", (req, res) => {
 
 app.use('/api', router);
 
+app.use(errorLoggerMiddleware); // error logger, last one in chain
 app.listen(port, () => {
-  console.log(`Listening on port ${port}...`);
+  console.debug(`Listening on port ${port}...`);
 });
