@@ -3,7 +3,7 @@ import '@mdi/font/css/materialdesignicons.css'
 
 import 'vuetify/styles'
 import { createVuetify } from 'vuetify'
-import { lightTheme, darkTheme } from '~/assets/vuetifyThemes'
+import { light, dark } from '~/assets/vuetifyThemes'
 
 // Translations provided by Vuetify
 import { de, en } from 'vuetify/locale'
@@ -17,10 +17,10 @@ export default defineNuxtPlugin((app) => {
       messages: { de, en },
     },
     theme: {
-      defaultTheme: 'lightTheme',
+      defaultTheme: 'light',
       themes: {
-        lightTheme,
-        darkTheme
+        light,
+        dark
       },
       variations: {
         colors: ['primary', 'secondary', 'accent'],
