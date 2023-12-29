@@ -5,7 +5,9 @@
 		<NuxtLoadingIndicator />
 		
 		<NuxtLayout>
-			<NuxtPage />
+			<v-sheet class="pa-4 rounded">
+				<NuxtPage />
+			</v-sheet>
 		</NuxtLayout>
 	</div>
 </template>
