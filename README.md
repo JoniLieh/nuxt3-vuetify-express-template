@@ -10,13 +10,25 @@
 * SSR Frontend
 * Secured Backend
 * PWA 
+* Bunjs
 
 # General Setup
 1. Use `.env` files
 2. Configure `nuxt.config.ts`
 3. *(required for PWA)* Generate frontend images depending on `/public/images/logo.svg` run `bun run generate-pwa-assets`
+<small>(You need special sized images for PWA, if you don't have any, you can generate them)</small>
 4. *VSCode Extensions* `Nuxtr`,`Volar`*(`volar-takeover-mode`)* *(,`Vue 3 Snippets`,`Vue Volar extension Pack`)*
 5. Install with `bun install` or `bun reset` in each directory
+
+# Docker
+```sh
+# simple
+docker compose -d --env-file .env.production up
+# run with rebuilt
+docker compose -d --env-file .env.production --build --force-recreate up
+# force rebuilt container
+docker compose --env-file .env.production build --no-cache
+```
 
 # Frontend `/frontend`
 ## Setup
@@ -34,6 +46,10 @@ bun run start
 * `Nuxt`
 * `Vuetify`
 * `Vite/PWA`
+
+## Info
+
+* Proxy from frontend to backend, env `NUXT_PUBLIC_API_BASE` should be service "`backend`" domain look at `const proxyTo` in `nuxt.config.ts`
 
 # Backend `/backend`
 ## Setup
@@ -66,3 +82,5 @@ bun run start
 * Could be caching problem e.g. `pwa workbox` → check `globPatterns` in `nuxt.config.ts` or `injectManifest` w/ `sw.js`
 ## tsconfig.json Error / Auto-Imports not registered
 * Open `frontend` and `backend` in a different vscode(ensure ts works as expected)
+## `error: zlib.BrotliDecompress is not implemented`
+* Docker `FROM oven/bun` does not support BrotliDecompress, use different image instead
