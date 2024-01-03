@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "bun run generate-pwa-assets && nuxt build --dotenv ../.env.production",
+    "build": "nuxt build --dotenv ../.env.production",
     "dev": "nuxt dev --dotenv ../.env.development",
     "generate": "nuxt generate --dotenv ../.env.production",
     "preview": "nuxt preview --dotenv ../.env.production",

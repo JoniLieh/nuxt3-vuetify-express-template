@@ -7,6 +7,14 @@ const title = 'NA - NuxtApp';
 const shortTitle = 'NA - NuxtApp';
 const description = 'My App description'
 
+const { NUXT_PUBLIC_API_BASE, NUXT_API_SECRET, NODE_ENV } = process.env
+
+var oldAPIUrl = NUXT_PUBLIC_API_BASE || "http://localhost:33001/api";
+var newAPIUrl = new URL(oldAPIUrl);
+newAPIUrl.hostname = 'backend';
+
+const proxyTo = (process.browser ? `${NUXT_PUBLIC_API_BASE}` : `${newAPIUrl.toString()}`)
+
 const config: NuxtConfig = {
   app: {
     head: {
@@ -14,12 +22,9 @@ const config: NuxtConfig = {
     }
   },
 
-  // Variabes to access on runtime
+  // Variabes to access on runtime for nuxt backend and public in browser
   runtimeConfig: {
-    NUXT_PUBLIC_API_BASE: process.env.NUXT_PUBLIC_API_BASE,
-    public: {
-
-    }
+    public: { }
   },
 
   // import styles
@@ -62,9 +67,9 @@ const config: NuxtConfig = {
     routeRules: {
       "/api/**": {
         proxy: {
-          to: process.env.NUXT_PUBLIC_API_BASE + "/**",
+          to: proxyTo + "/**",
           headers: {
-            "X-API-KEY": process.env.NUXT_API_SECRET,
+            "X-API-KEY": NUXT_API_SECRET,
             // "authorization": "123456" // will be JWT Token after login, set in request
           },
           cors: true
@@ -158,7 +163,7 @@ const config: NuxtConfig = {
   },
 
   devtools: {
-    enabled: process.env.NODE_ENV !== 'production',
+    enabled: NODE_ENV !== 'production',
   },
 }
 
