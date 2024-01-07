@@ -12,6 +12,7 @@
 * Secured Backend
 * PWA 
 * Bunjs
+* Docker
 
 # General Setup
 1. Use `.env` files
