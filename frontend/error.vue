@@ -27,7 +27,7 @@ const props = defineProps({
   error: Object
 })
 
-console.log(props.error);
+console.log("An error just happend, showing error.vue");
 
 const handleError = () => clearError({ redirect: '/' })
 </script>
