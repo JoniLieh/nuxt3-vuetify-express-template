@@ -27,7 +27,7 @@
 # simple
 docker compose -d --env-file .env.production up
 # run with rebuilt
-docker compose -d --env-file .env.production --build --force-recreate up
+docker compose --env-file .env.production up --build
 # force rebuilt container
 docker compose --env-file .env.production build --no-cache
 ```
