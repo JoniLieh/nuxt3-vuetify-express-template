@@ -21,6 +21,7 @@
     "@vite-pwa/assets-generator": "^0.2.2",
     "@vite-pwa/nuxt": "^0.4.0",
     "nuxt": "^3.9.0",
+    "nuxt-security": "^1.0.0",
     "pinia": "^2.1.7",
     "sass": "^1.69.5",
     "typescript": "^5.3.3",
