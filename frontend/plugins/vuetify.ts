@@ -11,6 +11,7 @@ import { de, en } from 'vuetify/locale'
 export default defineNuxtPlugin((app) => {
   const vuetify = createVuetify({
     // ... your configuration
+    ssr: true,
     locale: {
       locale: 'de',
       fallback: 'en',
