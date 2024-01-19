@@ -1,4 +1,4 @@
-import { twColors } from "./tw-colors"
+import vuetifyColors from 'vuetify/lib/util/colors.mjs'
 
 export const light = {
   dark: false,
@@ -8,10 +8,10 @@ export const light = {
     primary: "#6200EE",
     secondary: "#03DAC6",
     accent: "#cc0000",
-    error: twColors.red[500],
-    info: twColors.blue[500],
-    success: twColors.emerald[500],
-    warning: twColors.amber[500],
+    info: vuetifyColors.lightBlue.base,
+    warning: vuetifyColors.amber.darken4,
+    error: vuetifyColors.deepOrange.accent4,
+    success: vuetifyColors.green.darken1
   },
 }
 
@@ -23,9 +23,9 @@ export const dark = {
     primary: "#6200EE",
     secondary: "#03DAC6",
     accent: "#cc0000",
-    error: twColors.red[500],
-    info: twColors.blue[500],
-    success: twColors.emerald[500],
-    warning: twColors.amber[500],
+    info: vuetifyColors.lightBlue.base,
+    warning: vuetifyColors.amber.darken4,
+    error: vuetifyColors.deepOrange.accent4,
+    success: vuetifyColors.green.darken1
   },
 }
